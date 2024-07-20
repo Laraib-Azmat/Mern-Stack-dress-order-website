@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 export const Navbar = () => {
 
    const [menu, setMenu]=useState('shop');
-   const {getTotalCartItems} = useContext(ShopContext);
+   const {getTotalCartItems, token, setToken} = useContext(ShopContext);
    const [isHighlight, setHighlight] = useState(false);
    const menuRef = useRef();
 
@@ -58,7 +58,7 @@ export const Navbar = () => {
 
 <div className={styles.rightBar}>
 <div className={styles['nav-login-cart']}>
-  {localStorage.getItem("auth-token") ? <button onClick={()=>{localStorage.removeItem("auth-token");window.location.replace("/")}}>Logout</button> :
+  {token ? <button onClick={()=>{localStorage.removeItem("token");window.location.replace("/");setToken("")}}>Logout</button> :
 <Link to='/login'><button>Login</button></Link>}
 <Link to='/cart'><img className={isHighlight?styles.bump:""} src={cartIcon} alt="cart-icon" /></Link>
 <div className={`${styles['nav-cart-count']} ${isHighlight?styles.bump:""}`}>{getTotalCartItems()}</div>

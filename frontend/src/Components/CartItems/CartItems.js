@@ -14,27 +14,28 @@ export const CartItems = () => {
         <p>Title</p>
         <p>Price</p>
          <p>Quantity</p>
+         <p>Size</p>
          <p>Total</p>
          <p>Remove</p>
     </div>
     <hr/>
   {
-    allProducts.map((e)=>{
-        if(cartItem[e.id]>0){
-            return  <div key={e.id}>
-            <div className={`${styles['cartitem-format']} ${styles['cartitems-format-main']}`}>
-                <img src={e.image} className={styles['carticon-product-icon']} />
-                <p>{e.name}</p>
-                <p>${e.new_Price}</p>
-                <button className={styles['cartitem-quantity']}>{cartItem[e.id]}</button>
-                <p>${e.new_Price*cartItem[e.id]}</p>
-                <img className={styles['cartitem-remove-icon']} src={removeIcon} onClick={()=>{removeToCart(e.id)}} />
-            </div>
-            <hr/>
-         </div>
-        }
-        return null;
-    })
+    cartItem.map((e,i)=>{
+      return  <div key={i}>
+      <div className={`${styles['cartitem-format']} ${styles['cartitems-format-main']}`}>
+          <img src={e.image} className={styles['carticon-product-icon']} />
+          <p>{e.name}</p>
+          <p>${e.price}</p>
+          <button className={styles['cartitem-quantity']}>{e.amount}</button>
+          <p>{e.size}</p>
+          <p>${e.price*e.amount}</p>
+          <img className={styles['cartitem-remove-icon']} src={removeIcon} onClick={()=>{removeToCart(e.id)}} />
+      </div>
+      <hr/>
+   </div>
+       })
+
+
   }
   <div className={styles['cartitem-down']}>
     <div className={styles['cartitem-total']}>

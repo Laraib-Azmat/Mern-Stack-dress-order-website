@@ -10,6 +10,17 @@ export const ProductDisplay = (props) => {
     const {addToCart}=useContext(ShopContext);
     const {product}=props;
     const [Size, setSize] = useState('S')
+
+    const addCartHandler = ()=>{
+        addToCart({
+            id:product.id,
+            name:product.name,
+            image:product.image,
+            price:product.new_Price,
+            amount:1,
+            size:Size
+        })
+    }
    
 
   return (
@@ -80,7 +91,7 @@ export const ProductDisplay = (props) => {
         <motion.button 
         whileHover={{scale: 1.1, rotateX: 10, rotateY: -10 ,
             transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.2 }}}
-        onClick={()=>{addToCart(product.id,Size)}}>ADD TO CART</motion.button>
+        onClick={addCartHandler}>ADD TO CART</motion.button>
         <p className={styles['productdisplay-right-category']}>
             <span>{product.category} :</span>{product.category}, {product.name}
         </p>

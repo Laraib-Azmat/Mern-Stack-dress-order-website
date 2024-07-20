@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './LoginSignup.module.css'
-import { Link } from 'react-router-dom'
+import { ShopContext } from '../Context/ShopContext';
 
 export const LoginSignup = () => {
 
   const [state , setState] = useState("Login");
+  const {url,setToken} = useContext(ShopContext);
   const [formData, setFormData] = useState({
     username:'',
     email:"",
@@ -18,7 +19,7 @@ export const LoginSignup = () => {
   const loginHandler = async ()=>{
      
     let responseData;
-    await fetch ("http://localhost:4000/login",{
+    await fetch (url+"/user/login",{
       method:'POST',
       headers:{
         Accept:"application/form-data",
@@ -30,7 +31,8 @@ export const LoginSignup = () => {
     .then(data=>responseData=data)
 
     if(responseData.success){
-      localStorage.setItem("auth-token", responseData.token);
+    localStorage.setItem("token", responseData.token);
+    setToken(responseData.token)
       window.location.replace("/")
     }else{
       alert(responseData.errors)
@@ -40,7 +42,7 @@ export const LoginSignup = () => {
   const signupHandler = async ()=>{
     
     let responseData;
-    await fetch ("http://localhost:4000/signup",{
+    await fetch (url+"/user/register",{
       method:'POST',
       headers:{
         Accept:"application/form-data",
@@ -52,7 +54,8 @@ export const LoginSignup = () => {
     .then(data=>responseData=data)
 
     if(responseData.success){
-      localStorage.setItem("auth-token", responseData.token);
+      localStorage.setItem("token", responseData.token);
+      setToken(responseData.token)
       window.location.replace("/")
     }else{
       alert(responseData.errors)

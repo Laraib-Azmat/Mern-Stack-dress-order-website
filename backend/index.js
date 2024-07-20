@@ -4,6 +4,7 @@ import { connectDB } from "./config/db.js";
 import productRoute from "./routes/clothRoute.js";
 import multer from "multer";
 import userRouter from "./routes/userRoute.js";
+import cartRouter from "./routes/cartRoute.js";
 
 // app config
 const app = express();
@@ -30,6 +31,7 @@ const storage = multer.diskStorage({
  //Endpoint for uploading image
  app.use("/images", express.static('upload/images'))
  app.post("/upload",upload.fields([{name:'mainImage', maxCount:1},{name:'subImages', maxCount:4}]),(req,res)=>{
+
 
     try {
         const mainImageFiles = req.files['mainImage'];
@@ -65,6 +67,7 @@ const storage = multer.diskStorage({
 //api endpoints
 app.use("/product",productRoute)
 app.use("/user", userRouter);
+app.use("/cart", cartRouter);
 
 app.get("/",(req,res)=>{
     res.send("api working")
