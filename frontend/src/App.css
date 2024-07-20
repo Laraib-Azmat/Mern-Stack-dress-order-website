@@ -1,0 +1,33 @@
+
+.sideBtn{
+  position: fixed;
+bottom: 20px;
+right: 20px;
+padding: 10px 20px;
+background-color: #ff6f61;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+width: 60px;
+height: 60px;
+border-radius: 100%;
+align-items: center;
+justify-content: center;
+display: flex;
+z-index: 100;
+font-size: 20px;
+font-weight: bold;
+}
+
+@media(max-width:800px){
+  .sideBtn{
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+}
+
+}
+
+
