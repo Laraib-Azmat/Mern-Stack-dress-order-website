@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 import handIcon from '../../Assets/hand_icon.png'
 import arrowIcon from '../../Assets/arrow.png'
-import heroImg1 from '../../Assets/heroImg1.png'
-import heroImg2 from "../../Assets/heroImg2.png"
-import heroImg3 from "../../Assets/heroImg3.png"
-import heroImg4 from "../../Assets/heroImg4.png"
+import heroImg1 from '../../Assets/hero1.png'
+import heroImg2 from "../../Assets/hero2.png"
+import heroImg3 from "../../Assets/hero3.png"
 import {motion} from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 export const Hero = () => {
 
-  const images = [heroImg1, heroImg2,heroImg3, heroImg4];
+  const images = [heroImg1, heroImg2,heroImg3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate()
 
   useEffect(()=>{
 
@@ -19,7 +20,7 @@ export const Hero = () => {
       setCurrentImageIndex(prevIndex=>
         prevIndex === images.length-1 ? 0 : prevIndex +1
       );
-    }, 3000)
+    }, 2000)
 
     console.log(currentImageIndex)
 return()=> clearInterval(interval)
@@ -62,7 +63,9 @@ return()=> clearInterval(interval)
         transition={{type:'spring', stiffness:100,damping:10,delay:1}}
         whileHover={{scale: 1.1, rotateX: 10, rotateY: -10 ,
           transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.2 }}}
-        className={styles['hero-latest-btn']}>
+        className={styles['hero-latest-btn']}
+        onClick={()=>navigate("/allProduct")}
+        >
               <div>Latest Collection</div>
               <img src={arrowIcon} />
         </motion.button>

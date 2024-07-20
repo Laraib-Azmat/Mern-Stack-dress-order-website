@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './RelatedProducts.module.css'
-import data_product from '../../Assets/data'
 import { Item } from '../Item/Item'
 import { motion } from 'framer-motion'
+import { ShopContext } from '../Context/ShopContext'
 
-export const RelatedProducts = () => {
+export const RelatedProducts = ({product}) => {
+
+  const {allProducts} = useContext(ShopContext);
+  const related_product = allProducts.filter(i => i.category === product.category);
+  const data_product = related_product.slice(3, 7);
+
   return (
     <div className={styles.RelatedProducts}>
         <motion.h1
@@ -17,7 +22,7 @@ export const RelatedProducts = () => {
         <hr />
         <div className={styles['relatedProducts-item']}>
             {data_product.map((item, i)=>{
-                return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} /> 
+                return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_Price} old_price={item.old_Price} /> 
             }
 
             )}

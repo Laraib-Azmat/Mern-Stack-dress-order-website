@@ -1,8 +1,10 @@
 .item{
     width: 280px;
+    height: 400px;
 }
 .item img{
     width: 280px;
+
 }
 .item p{
     margin: 6px 0px;

@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp} from '@fortawesome/free-solid-svg-icons'
+import AllProducts from './Components/Pages/AllProducts';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
         <Route path=':productId' element={<Product
         />} />
       </Route>
+      <Route path='allProduct' element={<AllProducts/>} />
       <Route path='/cart' element={<Cart/>} />
       <Route path='/login' element={<LoginSignup/>} />
     </Routes>

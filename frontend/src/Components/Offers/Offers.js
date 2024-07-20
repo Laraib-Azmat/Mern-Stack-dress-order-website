@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './Offers.module.css'
-import { delay, motion } from 'framer-motion'
-
-import exclusiveImage from '../../Assets/exclusive_image.png'
+import {  motion } from 'framer-motion'
+import exclusiveImage from '../../Assets/offer.png'
 
 export const Offers = () => {
   return (

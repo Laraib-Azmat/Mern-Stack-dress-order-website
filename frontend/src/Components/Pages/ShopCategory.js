@@ -21,7 +21,7 @@ export const ShopCategory = (props) => {
        className={styles['shopcategory-banner']} src={props.banner} />
        <div className={styles['shopcategory-indexSort']}>
         <p>
-          <span>Showing 1-12</span> out of 36 products
+          <span>Showing 1-12</span> out of {contextValue.allProducts.length} products
         </p>
         <motion.div
          whileHover={{scale:1.1,rotateZ:-3, transition:{type:'spring', delay:0.1, stiffness:100, damping:10}}}
