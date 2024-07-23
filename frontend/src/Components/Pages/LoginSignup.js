@@ -82,7 +82,7 @@ export const LoginSignup = () => {
         </p>
       }
         <div className={styles['loginsignup-agree']}>
-          <input type='checkbox' name='' id=''/>
+          <input type='checkbox' required name='' id=''/>
           <p>By continuing, i agree to the terms of use & privacy policy.</p>
         </div>
       </div>
